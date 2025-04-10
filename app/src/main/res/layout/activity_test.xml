@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:id="@+id/headerText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="对话系统测试"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="16dp"
+        android:textColor="#000000" />
+
+    <Button
+        android:id="@+id/testButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="运行全部测试"
+        android:textStyle="bold"
+        android:background="@android:color/holo_blue_light"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="8dp" />
+        
+    <Button
+        android:id="@+id/showDialogDirectButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="直接显示弹窗"
+        android:textStyle="bold"
+        android:background="#FF4CAF50"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:padding="12dp"
+        android:layout_marginBottom="8dp" />
+        
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+        
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            
+            <Button
+                android:id="@+id/testLocalConfigButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="测试配置"
+                android:layout_marginEnd="4dp"
+                android:textColor="#000000"
+                android:background="#E0E0E0" />
+                
+            <Button
+                android:id="@+id/testMultiLineButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="测试线路"
+                android:layout_marginEnd="4dp"
+                android:textColor="#000000"
+                android:background="#E0E0E0" />
+                
+            <Button
+                android:id="@+id/testHanButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="测试han"
+                android:layout_marginEnd="4dp"
+                android:textColor="#000000"
+                android:background="#E0E0E0" />
+                
+            <Button
+                android:id="@+id/testC0001Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="测试解析器"
+                android:layout_marginEnd="4dp"
+                android:textColor="#000000"
+                android:background="#E0E0E0" />
+                
+            <Button
+                android:id="@+id/testDialogButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="测试对话框"
+                android:layout_marginEnd="4dp"
+                android:textColor="#000000"
+                android:background="#E0E0E0" />
+                
+            <Button
+                android:id="@+id/testGitcodeUrlButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="测试GitCode"
+                android:textColor="#FFFFFF"
+                android:background="#D32F2F" />
+                
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <ScrollView
+        android:id="@+id/resultScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="16dp"
+        android:background="#F5F5F5">
+
+        <TextView
+            android:id="@+id/resultText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:fontFamily="monospace"
+            android:textColor="#000000"
+            android:padding="8dp"
+            android:text="等待测试运行..." />
+    </ScrollView>
+    
+    <TextView
+        android:id="@+id/versionText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="测试版本 1.0"
+        android:textSize="12sp"
+        android:gravity="center"
+        android:layout_marginTop="8dp"
+        android:textColor="#757575" />
+</LinearLayout> 

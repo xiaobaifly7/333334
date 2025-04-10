@@ -1,0 +1,45 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# 添加以下规则排除更多不必要文件
+# 编译后的文件
+*.class
+*.dex
+*.ap_
+*.apk
+
+# 生成的文件
+bin/
+gen/
+out/
+
+# Android Studio / IDEA 
+*.iws
+.idea/tasks.xml
+.idea/dictionaries
+.idea/gradle.xml
+.idea/misc.xml
+.idea/runConfigurations.xml
+
+# 所有构建输出
+app/build/
+**/build/
+**/release/
+**/debug/
+
+# 大文件目录
+app/build/intermediates/
+app/build/outputs/

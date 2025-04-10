@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".CustomDialogDemo">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="弹窗系统演示"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="24dp" />
+
+    <Button
+        android:id="@+id/btn_show_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="显示配置弹窗"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/btn_show_custom_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="显示自定义弹窗"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/btn_check_config"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="检查配置状态"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="使用说明:\n\n1. 应用启动时会自动显示远程配置的弹窗\n2. 点击"显示配置弹窗"按钮可再次显示\n3. 点击"显示自定义弹窗"可显示本地定义的弹窗\n4. 点击"检查配置状态"查看当前配置信息"
+        android:layout_marginTop="16dp"
+        android:lineSpacingExtra="4dp" />
+
+</LinearLayout> 

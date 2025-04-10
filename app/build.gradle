@@ -1,0 +1,119 @@
+plugins {
+    alias(libs.plugins.android.application)
+}
+
+android {
+    namespace 'com.example.onlinedialogdemo2'
+    compileSdk 35
+    buildToolsVersion "35.0.1"
+
+    defaultConfig {
+        applicationId "com.example.onlinedialogdemo2"
+        minSdk 26
+        targetSdk 35
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        
+        // 启用MultiDex支持
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+        encoding "UTF-8"
+    }
+    packagingOptions {
+        resources {
+            excludes += ['META-INF/DEPENDENCIES', 'META-INF/LICENSE', 'META-INF/LICENSE.txt', 'META-INF/license.txt', 'META-INF/NOTICE', 'META-INF/NOTICE.txt', 'META-INF/notice.txt', 'META-INF/ASL2.0']
+        }
+        // 禁用重复类检查
+        jniLibs {
+            useLegacyPackaging = true
+        }
+    }
+
+    // 添加lint配置，忽略错误
+    lint {
+        abortOnError false
+        checkReleaseBuilds false
+        disable 'MissingTranslation', 'ExtraTranslation'
+    }
+
+    // 设置构建功能
+    buildFeatures {
+        buildConfig = true
+    }
+
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
+
+    // 添加编码修复任务
+    task fixEncoding {
+        doLast {
+            def srcDir = new File(projectDir, 'src/main/java')
+            def javaFiles = []
+            srcDir.eachFileRecurse { file ->
+                if (file.name.endsWith('.java')) {
+                    javaFiles << file
+                }
+            }
+            
+            javaFiles.each { file ->
+                println "正在修复文件编码: ${file.path}"
+                def content = file.getText('UTF-8')
+                def fixedContent = new String(content.getBytes('ISO-8859-1'), 'UTF-8')
+                file.write(fixedContent, 'UTF-8')
+            }
+        }
+    }
+}
+
+// 解决Kotlin依赖冲突
+configurations.all {
+    resolutionStrategy {
+        force 'org.jetbrains.kotlin:kotlin-stdlib:1.8.10'
+        force 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.10'
+        force 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.10'
+    }
+    
+    exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk7'
+    exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk8'
+}
+
+dependencies {
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.activity
+    implementation libs.constraintlayout
+    
+    // 显式添加kotlin标准库
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.8.10'
+    
+    // 添加MultiDex支持
+    implementation 'androidx.multidex:multidex:2.0.1'
+    
+    // 测试依赖
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
+    androidTestImplementation 'androidx.test:core:1.5.0'
+    androidTestImplementation 'androidx.test:runner:1.5.1'
+    androidTestImplementation 'androidx.test:rules:1.5.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+}
+
+// 设置全局gradle构建性能选项
+gradle.projectsEvaluated {
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+    }
+}
